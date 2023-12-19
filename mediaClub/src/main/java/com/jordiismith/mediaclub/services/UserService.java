@@ -13,7 +13,6 @@ import com.jordiismith.mediaclub.models.User;
 import com.jordiismith.mediaclub.repositories.UserRepository;
 
 
-
 @Service
 public class UserService {
 
@@ -25,11 +24,6 @@ public class UserService {
 	}
 
 	public User register(User newUser, BindingResult result) {
-		
-		if (userRepo.findByUsername(newUser.getUsername()).isPresent()) {
-			result.rejectValue("username", "Matches", "This name is already taken");
-			return null;
-		}
 		
 		if (userRepo.findByEmail(newUser.getEmail()).isPresent()) {
 			result.rejectValue("email", "Matches", "This account already exists");
