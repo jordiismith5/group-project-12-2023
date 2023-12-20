@@ -38,17 +38,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="show" items="${shows}">
+					<c:forEach var="show" items="${media}">
 						<tr>
-							<td><c:out value="${show.id}"/></td>
-							<td><a href="/shows/${show.id}" class="nav-link"><c:out value="${show.showName}" /></a></td>
-							<td><c:out value="${show.rating}" /></td>
-							<td><c:out value="${show.user.getName()}" /></td>
-							<td><c:out value ="${show.episodecount}"/></td>
-							<td><c:out value ="${show.description}"/></td>
+							<td><c:out value="${medai.id}"/></td>
+							<td><a href="/shows/${media.id}" class="nav-link"><c:out value="${media.title}" /></a></td>
+							<td><c:out value="${media.rating}" /></td>
+							<td><c:out value="${media.user.getName()}" /></td>
+							<td><c:out value ="${media.count}"/></td>
+							<td><c:out value ="${media.description}"/></td>
 							<td class="text-space-between">
-								<c:if test="${show.user == user}"><a href="/shows/${show.id}/edit" class="nav-link">Edit</a></c:if>
-								<c:if test="${show.user == user }"><a href="/shows/${show.id}/delete" class="nav-link">Delete</a></c:if>
+								<c:if test="${media.user == user}"><a href="/shows/${media.id}/edit" class="nav-link">Edit</a></c:if>
+								<c:if test="${media.user == user }"><a href="/shows/${media.id}/delete" class="nav-link">Delete</a></c:if>
 							</td>
 						</tr>
 					</c:forEach>
