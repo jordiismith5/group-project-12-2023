@@ -43,11 +43,11 @@
 				            <td><c:out value="${media.id}" /></td>
 				            <td><a href="/shows/${media.id}" class="nav-link"><c:out value="${media.title}" /></a></td>
 				            <td><c:out value="${media.rating}" /></td>
-				            <td><c:out value="${media.user}" /></td>
+				            <td><c:out value="${media.user.name}" /></td>
 				            <td><c:out value="${media.count}" /></td>
 				            <td><c:out value="${media.description}" /></td>
 				            <td class="text-space-between">
-				                <c:if test="${media.user}=='user'">
+				                <c:if test="${media.user == user}">
 				                    <a href="/shows/${media.id}/edit" class="nav-link">Edit</a>
 				                    <a href="/shows/${media.id}/delete" class="nav-link">Delete</a>
 				                </c:if>

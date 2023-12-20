@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<title>${show.user.name}</title>
+<title>${media.user.name}</title>
 </head>
 <body>
 	<div class="container-fluid">

@@ -78,7 +78,7 @@ public class MainController {
 	
 	
 	
-//-------the main view/ dashboard
+//-------the main view/ dash board
 	@GetMapping("/shows")
 	public String dashboard(Model model, HttpSession session) {
 	    Long userId = (Long) session.getAttribute("userId");
@@ -105,6 +105,8 @@ public class MainController {
 		if (userId == null) {
 			return "redirect:/";
 		}
+		User user = userServ.findById((Long)session.getAttribute("userId"));
+    	model.addAttribute("user", user);
 		return "addMedia.jsp";
 	}
 	

@@ -21,8 +21,8 @@ public class MediaService {
 	}
 	
 	//Create
-	public Media createMedia(Media newTeam) {
-		return mediaRepo.save(newTeam);
+	public Media createMedia(Media newMedia) {
+		return mediaRepo.save(newMedia);
 	}
 	
 	//retrieve

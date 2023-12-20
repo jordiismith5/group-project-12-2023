@@ -22,6 +22,10 @@ public class UserService {
 	public User findById(Long id) {
 		return userRepo.findById(id).orElse(null);
 	}
+	
+	public User findByName(String name) {
+		return userRepo.findByName(name).orElse(null);
+	}
 
 	public User register(User newUser, BindingResult result) {
 		

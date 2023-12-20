@@ -31,11 +31,11 @@
 				</div>
 				<div class="mb-3">
 					<form:label path="rating" >Rating:</form:label>
-					<form:input type="number" path="rating" class="form-control" />
+					<form:input type="number" min="1" max="5" path="rating" class="form-control" />
 				</div>
 				<div class="mb-3">
 					<form:label path="count">Number of Episodes:</form:label>
-					<form:input type = "number" path = "count" class ="form-control"/>
+					<form:input type = "number" min="1" path = "count" class ="form-control"/>
 				</div>
 				<div class="form-row">
 					<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
