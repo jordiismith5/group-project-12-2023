@@ -11,5 +11,6 @@ import com.jordiismith.mediaclub.models.User;
 public interface UserRepository extends CrudRepository<User, Long> {
 
 	Optional<User> findByEmail(String email);
+	
 
 }

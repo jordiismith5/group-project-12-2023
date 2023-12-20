@@ -13,23 +13,22 @@
 <body>
 	<div class="container-fluid">
 		<div class="container mx-auto mt-4">
-			<a href="/home" class="nav-link mb-3">Back to the Homepage!</a>
+			<a href="/shows" class="nav-link mb-3">Back to the Homepage!</a>
 			<main class="col-8 px-4 py-3 border border-1 border-pirmary rounded bg-light">
 				<div class="text-end">
-					<c:if test="${show.user == user}"><a href="/shows/${show.id}/edit" class="nav-link">Edit</a></c:if>
+					<c:if test="${media.user == user}"><a href="/shows/${media.id}/edit" class="nav-link">Edit</a></c:if>
 				</div>
 				<div>
-					<h1 class="display-5 mb-4"><c:out value="${show.showName}" /></h1>
-					<h4 class="mb-3"><span class="text-danger"><c:out value="${show.user.getName()}" /></span> added <span class="text-primary"><c:out value="${show.showName}" />.</h4>
-				
-					<hr />
-					<p>Episode Count:<c:out value="${show.episodeCount}" /></p>
-					<p>Description:<c:out value="${show.description}" /></p>
-					<p>Rating:<c:out value="${show.rating}" /></p>
+					<h1 class="display-5 mb-4"><c:out value="${media.title}" /></h1>
+					<h4 class="mb-3"><span class="text-danger"><c:out value="${media.user.getName()}" /></span> added by: <span class="text-primary"></span><c:out value="${media.title}" />.</h4>
+					<hr/>
+					<p>Episode Count:<c:out value="${media.count}" /></p>
+					<p>Description:<c:out value="${media.description}" /></p>
+					<p>Rating:<c:out value="${media.rating}" /></p>
 					
 				</div>
 				<div class= "text-end">
-					<c:if test="${show.user == user }"><a href="/shows/${show.id}/delete" class="nav-link">Delete</a></c:if>
+					<c:if test="${media.user == user }"><a href="/shows/${media.id}/delete" class="nav-link">Delete</a></c:if>
 				</div>
 			</main>
 		</div>

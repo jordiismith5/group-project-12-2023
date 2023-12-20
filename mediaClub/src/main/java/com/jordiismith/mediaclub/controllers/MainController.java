@@ -30,6 +30,8 @@ public class MainController {
 	private MediaService mediaServ;
 	
 	
+	
+//-----root redirect
 	@GetMapping("/")
 	public String root(Model model) {
 		model.addAttribute("newUser", new User());
@@ -37,6 +39,9 @@ public class MainController {
 		return "index.jsp";
 	}
 
+	
+	
+//-----register user
 	@PostMapping("/register")
 	public String register(@Valid @ModelAttribute("newUser") User newUser, BindingResult result, Model model, HttpSession session) {
 		userServ.register(newUser, result);
@@ -48,6 +53,9 @@ public class MainController {
 		return "redirect:/shows";
 	}
 
+	
+	
+//----------login user
 	@PostMapping("/login")
 	public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, BindingResult result, Model model,
 			HttpSession session) {
@@ -61,7 +69,7 @@ public class MainController {
 		return "redirect:/shows";
 	}
 	
-	
+//------logout
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 	    session.setAttribute("userId", null);
@@ -69,6 +77,8 @@ public class MainController {
 	}
 	
 	
+	
+//-------the main view/ dashboard
 	@GetMapping("/shows")
 	public String dashboard(Model model, HttpSession session) {
 	    Long userId = (Long) session.getAttribute("userId");
@@ -77,15 +87,18 @@ public class MainController {
 	        return "redirect:/";
 	    }
 
-	    List<Media> teams = mediaServ.allMedia();
+	    List<Media> medias = mediaServ.allMedia();
 	    User user = userServ.findById(userId);
 
-	    model.addAttribute("teams", teams);
+	    model.addAttribute("medias", medias);
 	    model.addAttribute("user", user);
 
 	    return "dashboard.jsp";
 	}
 	
+	
+	
+//-----adding show get/post	
 	@GetMapping("/shows/new")
 	public String addingMedia(@ModelAttribute("media") Media media, Model model, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
@@ -106,6 +119,8 @@ public class MainController {
 	}
 	
 	
+	
+//---------clicking on a show id to view more---
 	@GetMapping("/shows/{id}")
 	public String show(Model model, @PathVariable("id") Long id, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
@@ -122,6 +137,7 @@ public class MainController {
 	
 	
 	
+//------------editing a show post---
 	@GetMapping("/shows/{id}/edit")
 	public String edit(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("media", mediaServ.findMedia(id));
@@ -132,7 +148,7 @@ public class MainController {
 	public String updateMedia(@PathVariable("id") Long id, Model model, @Valid @ModelAttribute("media") Media media, BindingResult result) {
 		if(result.hasErrors()) {
 			model.addAttribute("media", mediaServ.findMedia(id));
-			return "redirect://shows/{id}/edit";
+			return "redirect:/shows/{id}/edit";
 	}
 		else {
 			mediaServ.updateMedia(media);
@@ -142,7 +158,7 @@ public class MainController {
 	
 	
 	
-	
+//-----deleting a show----
 	@RequestMapping("/shows/{id}/delete")
 	public String deleteMedia(@PathVariable("id") Long id) {
 		Media media = mediaServ.findMedia(id);

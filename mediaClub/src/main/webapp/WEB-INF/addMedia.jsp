@@ -14,7 +14,7 @@
 	<div class="container-fluid">
 		<div class="container mx-auto mt-4">
 			<div class="text-end">
-				<a href="/dashboard" class="nav-link mb-3">Back to the homepage!</a>
+				<a href="/shows" class="nav-link mb-3">Back to the homepage!</a>
 			</div>
 			<h1 class="display-4">Add a Show</h1>
 			<form:form action="/shows/create" modelAttribute="media" method="POST" class="col-5 mt-4 p-3">
