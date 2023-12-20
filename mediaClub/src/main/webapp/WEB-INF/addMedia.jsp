@@ -14,16 +14,16 @@
 	<div class="container-fluid">
 		<div class="container mx-auto mt-4">
 			<div class="text-end">
-				<a href="/home" class="nav-link mb-3">Back to the homepage!</a>
+				<a href="/dashboard" class="nav-link mb-3">Back to the homepage!</a>
 			</div>
 			<h1 class="display-4">Add a Show</h1>
-			<form:form action="/shows/create" modelAttribute="show" method="POST" class="col-5 mt-4 p-3">
+			<form:form action="/shows/create" modelAttribute="media" method="POST" class="col-5 mt-4 p-3">
 				<div>
 					<form:errors path="*" class="text-danger"/>
 				</div>
 				<div class="mb-3">
-					<form:label path="showsName" >Shows Name:</form:label>
-					<form:input type="text" path="showsName" class="form-control" />
+					<form:label path="title" >Shows Name:</form:label>
+					<form:input type="text" path="title" class="form-control" />
 				</div>
 				<div class="mb-3">
 					<form:label path="description" >Description Of the Show:</form:label>
@@ -34,8 +34,8 @@
 					<form:input type="number" path="rating" class="form-control" />
 				</div>
 				<div class="mb-3">
-					<form:label path="episodecount">Number of Episodes:</form:label>
-					<form:input type = "date" path = "visited" class ="form-control"/>
+					<form:label path="count">Number of Episodes:</form:label>
+					<form:input type = "number" path = "count" class ="form-control"/>
 				</div>
 				<div class="form-row">
 					<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
