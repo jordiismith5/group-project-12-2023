@@ -7,49 +7,43 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/dashStyle.css">
 <title>Dashboard</title>
 </head>
 <body>
-
-	<div class="container-fluid">
-		<div class="container mx-auto mt-4">
-			<header class="row justify-content-between align-items-center">
-				<div class="col-5 text-start">
-					<h4>Hello, ${user.name}. Welcome to..</h4>
-					<h1>MediaClub</h1>
-				</div>
-				<div class="col-5 text-end">
-					<a href="/logout" class="nav-link">Logout</a>
-					<a href="/shows/new" class="nav-link">+Add to My Shows</a>
-				</div>
-			</header>
+		<div id="header"> 
+			<h4 id="welcome">Hello, ${user.name}. Welcome to..</h4>
+			<img src="media.png" alt="mediaClub" id="title"/>
+			
+			<div id="nav-but"> 
+				<a href="/logout" id="nav-logout">Logout</a>
+				<a href="/shows/new" id="nav-link">Add to My Shows</a>
+			</div>
 		</div>
-		<div class="row mx-auto mt-3">
-			<table class="table table-striped table-bordered caption-top">
-				<thead class="table-info">
-					<tr class="align-middle">
-						<th>ID</th>
+	<div id="container">
+			<table>
+				<thead >
+					<tr >
 						<th>Show Name</th>
 						<th>Rating</th>
 						<th>User Name</th>
 						<th>Episode count</th>
 						<th>Description</th>
+						<th>Publisher Buttons</th>
 					</tr>
 				</thead>
 				<tbody>
 			    	<c:forEach var="media" items="${medias}">
 				        <tr>
-				            <td><c:out value="${media.id}" /></td>
-				            <td><a href="/shows/${media.id}" class="nav-link"><c:out value="${media.title}" /></a></td>
-				            <td><c:out value="${media.rating}" /></td>
+				            <td><a href="/shows/${media.id}" id="show"><c:out value="${media.title}" /></a></td>
+				            <td class="star"><c:out value="${media.rating}" /></td>
 				            <td><c:out value="${media.user.name}" /></td>
 				            <td><c:out value="${media.count}" /></td>
 				            <td><c:out value="${media.description}" /></td>
-				            <td class="text-space-between">
+				            <td>
 				                <c:if test="${media.user == user}">
-				                    <a href="/shows/${media.id}/edit" class="nav-link">Edit</a>
-				                    <a href="/shows/${media.id}/delete" class="nav-link">Delete</a>
+				                    <a href="/shows/${media.id}/edit" id="edit">Edit</a>
+				                    <a href="/shows/${media.id}/delete" id="delete">Delete</a>
 				                </c:if>
 				            </td>
 				        </tr>
@@ -58,9 +52,5 @@
 
 			</table>
 		</div>
-		
-	</div>
-	
-
 </body>
  </html>

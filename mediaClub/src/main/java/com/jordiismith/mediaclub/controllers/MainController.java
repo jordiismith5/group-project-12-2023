@@ -149,8 +149,7 @@ public class MainController {
 	@PostMapping("/shows/{id}/edit")
 	public String updateMedia(@PathVariable("id") Long id, Model model, @Valid @ModelAttribute("media") Media media, BindingResult result) {
 		if(result.hasErrors()) {
-			model.addAttribute("media", mediaServ.findMedia(id));
-			return "redirect:/shows/{id}/edit";
+			return "editMedia.jsp"; 
 	}
 		else {
 			mediaServ.updateMedia(media);
@@ -163,8 +162,7 @@ public class MainController {
 //-----deleting a show----
 	@RequestMapping("/shows/{id}/delete")
 	public String deleteMedia(@PathVariable("id") Long id) {
-		Media media = mediaServ.findMedia(id);
-		mediaServ.deleteMedia(media);
+		mediaServ.deleteMedia(mediaServ.findMedia(id));
 		return "redirect:/shows";
 	}
 }
